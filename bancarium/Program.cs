@@ -17,8 +17,13 @@ l’ammontare totale dei prestiti concessi.
 
 internal class Program
 {
+    
     private static void Main(string[] args)
     {
+        Client[] clienti = [];
+        Prestito[] prestiti = [];
+
+
         Console.WriteLine("Hello, World!");
     }
 }
@@ -27,15 +32,15 @@ internal class Program
 
 public class Client
 {
-    string nome;
-    string cognome;
-    string codiceFiscale;
-    double stipendio;
-    Prestito[] prestiti;
+    private string nome;
+    private string cognome;
+    private string codiceFiscale;
+    private double stipendio;
+    private Prestito[] prestiti;
 
 
 
-
+    //costruttore
     public Client(string nome, string cognome, string codiceFiscale, double stipendio)
     {
         this.nome = nome;
@@ -43,10 +48,64 @@ public class Client
         this.codiceFiscale = codiceFiscale;
         this.stipendio = stipendio;
         this.prestiti = [];
-
     }
 
 
+
+    //setters
+    public void setNome(string nome)
+    {
+        this.nome = nome;
+    }
+
+    public void setCognome(string cognome)
+    {
+        this.cognome = cognome;
+    }
+
+
+    public void setCodiceFiscale(string codiceFiscale)
+    {
+        this.codiceFiscale = codiceFiscale;
+    }
+
+
+    public void setStipendio(double stipendio)
+    {
+        this.stipendio = stipendio;
+    }
+
+
+    //getters
+
+    public string getNome()
+    {
+        return this.nome;
+    }
+
+    public string getCognome()
+    {
+        return this.cognome;
+    }
+
+
+    public string getCodiceFiscale()
+    {
+        return this.codiceFiscale;
+    }
+
+
+    public double getStipendio()
+    {
+        return this.stipendio;
+    }
+
+    public string getPrestiti()
+    {
+        return this.prestiti.ToString();
+    }
+
+    //tostring
     public string tostring()
     {
         return $"nome : {this.nome} cognome : {this.cognome} codice fiscale : {this.codiceFiscale} stipendio : {this.stipendio}";
@@ -66,13 +125,13 @@ public class Client
 
 class Prestito
 {
-    DateOnly dataDiInizio;
-    DateOnly dataDiFine;
-    double ammontare;
-    string rata;
-    Client cliente;
+    private DateOnly dataDiInizio;
+    private DateOnly dataDiFine;
+    private double ammontare;
+    private string rata;
+    private Client cliente;
 
-
+    //costruttore
     public Prestito(DateOnly dataDiInizio, DateOnly dataDiFine, string rata, double ammontare, Client cliente)
     {
         this.dataDiInizio = dataDiInizio;
@@ -84,9 +143,70 @@ class Prestito
     }
 
 
+    //setters
+    public void setDataDiInizio(DateOnly dataDiInizio)
+    {
+        this.dataDiInizio = dataDiInizio;
+    }
+
+    public void setDataDiFine(DateOnly dataDiFine)
+    {
+        this.dataDiFine = dataDiFine;
+    }
+
+
+    public void setRata(string rata)
+    {
+        this.rata = rata;
+    }
+
+
+    public void setAmmontare(double ammontare)
+    {
+        this.ammontare = ammontare;
+    }
+
+    public void setCliente(Client cliente)
+    {
+        this.cliente = cliente;
+    }
+
+    //getters
+
+    public DateOnly getDataDiInizio()
+    {
+        return this.dataDiInizio;
+    }
+
+    public DateOnly getDataDiFine()
+    {
+        return this.dataDiInizio;
+    }
+
+
+    public string getRata()
+    {
+        return this.rata;
+    }
+
+
+    public double getAmmontare()
+    {
+        return this.ammontare;
+    }
+
+    public Client getCliente()
+    {
+        return this.cliente;
+    }
+
+
+
+
+    //tostring
     public string toString()
     {
-        return $"Prestito iniziato : {dataDiInizio} , fine prestito {dataDiFine} rata ogni : {rata} totale da restituire : {ammontare} prestito di : {cliente.presentazione()}  ";
+        return $"Prestito iniziato : {dataDiInizio} , fine prestito {dataDiFine} rata ogni : {rata} totale da restituire : {ammontare} prestito di : {cliente.presentazione()}";
     }
 
 
