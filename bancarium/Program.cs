@@ -31,7 +31,7 @@ public class Client
     string cognome;
     string codiceFiscale;
     double stipendio;
-    //Prestito[] prestiti;
+    Prestito[] prestiti;
 
 
 
@@ -42,7 +42,7 @@ public class Client
         this.cognome = cognome;
         this.codiceFiscale = codiceFiscale;
         this.stipendio = stipendio;
-        //this.prestiti = [];
+        this.prestiti = [];
 
     }
 
@@ -64,3 +64,33 @@ public class Client
 
 
 
+class Prestito
+{
+    DateOnly dataDiInizio;
+    DateOnly dataDiFine;
+    double ammontare;
+    string rata;
+    Client cliente;
+
+
+    public Prestito(DateOnly dataDiInizio, DateOnly dataDiFine, string rata, double ammontare, Client cliente)
+    {
+        this.dataDiInizio = dataDiInizio;
+        this.dataDiFine = dataDiFine;
+        this.rata = rata;
+        this.ammontare = ammontare;
+        this.cliente = cliente;
+
+    }
+
+
+    public string toString()
+    {
+        return $"Prestito iniziato : {dataDiInizio} , fine prestito {dataDiFine} rata ogni : {rata} totale da restituire : {ammontare} prestito di : {cliente.presentazione()}  ";
+    }
+
+
+
+
+
+}
