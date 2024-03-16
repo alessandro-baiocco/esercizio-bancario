@@ -25,4 +25,42 @@ internal class Program
 
 
 
+public class Client
+{
+    string nome;
+    string cognome;
+    string codiceFiscale;
+    double stipendio;
+    //Prestito[] prestiti;
+
+
+
+
+    public Client(string nome, string cognome, string codiceFiscale, double stipendio)
+    {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.codiceFiscale = codiceFiscale;
+        this.stipendio = stipendio;
+        //this.prestiti = [];
+
+    }
+
+
+    public string tostring()
+    {
+        return $"nome : {this.nome} cognome : {this.cognome} codice fiscale : {this.codiceFiscale} stipendio : {this.stipendio}";
+
+    }
+
+    public string presentazione()
+    {
+        return $"{this.nome} {this.cognome}";
+
+    }
+
+
+}
+
+
 
