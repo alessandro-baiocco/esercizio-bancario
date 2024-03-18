@@ -10,7 +10,7 @@ La banca deve poter eseguire delle ricerche sui prestiti concessi ad un cliente 
 l’ammontare totale dei prestiti concessi.
  */
 
-
+using System;
 
 
 
@@ -20,8 +20,55 @@ internal class Program
     
     private static void Main(string[] args)
     {
-        Client[] clienti = [];
-        Prestito[] prestiti = [];
+
+        static Client[] clienti = [];
+        static Prestito[] prestiti = [];
+        while (true)
+        {
+            Console.WriteLine("seleziona cosa vuoi fare\n1.aggiungi prestito\n2.rimuovi prestito \n3.modifica prestito \n4.ricerca un cliente")
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    Console.WriteLine("selezionare cliente");
+                    for(int i = 0; i < clienti.Length; i++)
+                    {
+                        Console.WriteLine($"{i + 1}.{clienti[i]}")
+                    }
+                    while (true)
+                    {
+                        int clientSelector = CheckInt();
+                        if (clienti[clientSelector - 1] == null)
+                        {
+                            Console.WriteLine("numero non valido selezionare un numero nella lista");
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+                    
+                    
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+       
+
+
+
+
 
 
         Console.WriteLine("Hello, World!");
@@ -132,7 +179,7 @@ class Prestito
     private Client cliente;
 
     //costruttore
-    public Prestito(DateOnly dataDiInizio, DateOnly dataDiFine, string rata, double ammontare, Client cliente)
+    public Prestito(DateTime dataDiInizio, DateTime dataDiFine, string rata, double ammontare, Client cliente)
     {
         this.dataDiInizio = dataDiInizio;
         this.dataDiFine = dataDiFine;
@@ -208,6 +255,54 @@ class Prestito
     {
         return $"Prestito iniziato : {dataDiInizio} , fine prestito {dataDiFine} rata ogni : {rata} totale da restituire : {ammontare} prestito di : {cliente.presentazione()}";
     }
+
+
+
+
+
+}
+
+
+static int CheckInt()
+{
+    try
+    {
+        Console.WriteLine("inserisci un numero intero");
+        int clientSelector = Convert.ToInt16(Console.ReadLine());
+        return clientSelector;
+    }
+    catch
+    {
+        Console.WriteLine("input non valido");
+        CheckInt();
+         
+    }
+    
+
+
+
+
+}
+
+
+
+static string CreateLoan(Client cliente)
+{
+    DateTime today = DateTime.Today;
+
+    Console.WriteLine("inserire la data nel seguente formato \"gg/MM/AAAA\"")
+    string line = Console.ReadLine();
+    DateTime dt;
+
+    while (!DateTime.TryParseExact(line, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt))
+    {
+        Console.WriteLine("data invalida, per favore riprova");
+        line = Console.ReadLine();
+    }
+
+
+    Console.WriteLine("inserire tipo di rata \n 1.settimanale \n 2.mensile \n 3.annuale")
+
 
 
 
