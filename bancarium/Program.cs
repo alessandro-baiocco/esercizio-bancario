@@ -15,11 +15,102 @@ using System;
 using System.Numerics;
 internal class Program
 {
+    static List<Client> clienti = [];
+    static List<Prestito> prestiti = [];
+
+
+
+
+
+
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+
+
+        Client cliente1 = new Client("mario", "rossi", "BASFWFG", 1000.00);
+        Client cliente2 = new Client("gianni", "verdi", "BASFWFG", 1020.50);
+        Client cliente3 = new Client("sara", "gialli", "BASFWFG", 1100.20);
+
+        clienti.Add(cliente3);
+        clienti.Add(cliente2);
+        clienti.Add(cliente1);
+
+
+        while (true)
+        {
+            Console.WriteLine("seleziona cosa vuoi fare\n1.aggiungi prestito\n2.rimuovi prestito \n3.modifica prestito \n4.ricerca un cliente \n5.vedi lista prestiti \n6.esci");
+            string input = Console.ReadLine();
+
+
+            bool exit = false;
+
+            switch (input)
+            {
+                case "1":
+                    {
+                        Console.WriteLine("selezionare cliente");
+
+                        for(int i = 0; i < clienti.Count; i++)
+                        {
+                            Console.WriteLine(i + 1 + ". " + clienti[i].ToString());
+                        }
+                        
+                        while (true)
+                        {
+                            int clientSelector = CheckInt();
+                            if (clienti[clientSelector - 1] == null)
+                            {
+                                Console.WriteLine("numero non valido selezionare un numero nella lista");
+                            }
+                            else
+                            {
+                                string output = CreateLoan(clienti[clientSelector - 1]);
+                                Console.WriteLine(output);
+                                break;
+                            }
+
+                        }
+                        break;
+                    }
+
+
+                case "5":
+                    {
+
+                        for (int i = 0; i < prestiti.Count; i++)
+                        {
+                            Console.WriteLine(i + 1 + ". " + prestiti[i].ToString());
+                        }
+
+
+                        break;
+                    }
+                case "6":
+                    {
+                        Console.WriteLine("uscita...");
+                        exit = true;
+                        break;
+                    }
+
+
+                default:
+                    {
+                        Console.WriteLine("input non valido");
+                        break;
+                    }
+            }
+            if (exit)
+            {
+                break;
+            }
+
+
+
+
+
+        }
+
     }
-}
 
 
 
