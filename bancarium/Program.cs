@@ -16,6 +16,14 @@ using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 internal class Program
 {
+    static List<Client> clienti = [];
+    static List<Prestito> prestiti = [];
+
+
+
+
+
+
     private static void Main(string[] args)
     {
 
@@ -142,7 +150,7 @@ internal class Program
     
 
 
-    static int CheckInt()
+    public static int CheckInt()
     {
         while (true)
         {
@@ -160,7 +168,7 @@ internal class Program
         }
     }
 
-    static double CheckDouble()
+    public static double CheckDouble()
     {
         while (true)
         {
@@ -177,6 +185,10 @@ internal class Program
             }
         }
     }
+
+
+
+
 
 
 
@@ -260,7 +272,3 @@ internal class Program
 
 
 }
-
-
-
-
