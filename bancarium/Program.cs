@@ -20,12 +20,6 @@ internal class Program
     static List<Prestito> prestiti = [];
 
 
-
-
-
-
-
-
     private static void Main(string[] args)
     {
 
@@ -54,13 +48,14 @@ internal class Program
         prestiti.Add(prestito4);
 
 
-        while (true)
+        bool exit = true;
+        while (exit)
         {
             Console.WriteLine("seleziona cosa vuoi fare\n1.aggiungi prestito\n2.rimuovi prestito \n3.modifica prestito \n4.ricerca un cliente \n5.vedi lista prestiti \n6.esci");
             string input = Console.ReadLine();
 
 
-            bool exit = false;
+            
 
             switch (input)
             {
@@ -150,6 +145,12 @@ internal class Program
 
                             break;
                         }
+                case "4":
+                    {
+
+                        CLientSearch();
+                        break;
+                    }
 
 
                 case "5":
@@ -166,7 +167,7 @@ internal class Program
                 case "6":
                     {
                         Console.WriteLine("uscita...");
-                        exit = true;
+                        exit = false;
                         break;
                     }
 
@@ -177,13 +178,6 @@ internal class Program
                         break;
                     }
             }
-            if (exit)
-            {
-                break;
-            }
-
-
-
 
 
         }
@@ -461,7 +455,7 @@ internal class Program
                     }
                 case "5":
                     {
-                        Console.WriteLine("uscita");
+                        Console.WriteLine("uscita...");
                         exit = false;
                         break;
                     }
@@ -480,6 +474,123 @@ internal class Program
 
 
     }
+
+
+    static void CLientSearch()
+    {
+        bool exit = true;
+        while (exit)
+        {
+            Console.WriteLine("cosa vuoi cercare ? \n1.nome \n2.cognome \n3.codice fiscale \n4.esci ");
+            string searchString = Console.ReadLine();
+            switch (searchString)
+            {
+                case "1":
+                    {
+                        Console.WriteLine("inserire nome da ricercare:");
+                        string searchInput = Console.ReadLine().ToUpper();
+                        int total = 0;
+
+                        for (int i = 0; i < clienti.Count; i++)
+                        {
+                            if (clienti[i].getNome().ToUpper().Contains(searchInput))
+                            {
+                                Console.WriteLine(clienti[i].ToString() + "prestiti concessi : " + clienti[i].getPrestiti().Length);
+                                total++;
+                            }
+                        }
+                        if( total > 0)
+                            {
+                                Console.WriteLine("ricerca completata risultati trovati : " + total);
+                            }
+                        else
+                            {
+                                Console.WriteLine("ricerca completata non è stato trovato nessun risultato");
+                            }
+                         
+
+                        
+                        break;
+                    }
+                case "2":
+                    {
+                        Console.WriteLine("inserire cognome da ricercare:");
+                        string searchInput = Console.ReadLine().ToUpper();
+                        int total = 0;
+
+                        for (int i = 0; i < clienti.Count; i++)
+                        {
+                            if (clienti[i].getCognome().ToUpper().Contains(searchInput))
+                            {
+                                Console.WriteLine(clienti[i].ToString() + "prestiti concessi : " + clienti[i].getPrestiti().Length);
+                                total++;
+                            }
+                        }
+                        if (total > 0)
+                        {
+                            Console.WriteLine("ricerca completata risultati trovati : " + total);
+                        }
+                        else
+                        {
+                            Console.WriteLine("ricerca completata non è stato trovato nessun risultato");
+                        }
+                        break;
+                    }
+
+                case "3":
+                    {
+                        Console.WriteLine("inserire Codice Fiscale da ricercare:");
+                        string searchInput = Console.ReadLine().ToUpper();
+                        int total = 0;
+
+                        for (int i = 0; i < clienti.Count; i++)
+                        {
+                            if (clienti[i].getCodiceFiscale().ToUpper().Contains(searchInput))
+                            {
+                                Console.WriteLine(clienti[i].ToString() + "prestiti concessi : " + clienti[i].getPrestiti().Length );
+                                total++;
+                            }
+                        }
+                            if (total > 0)
+                            {
+                                Console.WriteLine("ricerca completata risultati trovati : " + total);
+                            }
+                            else
+                            {
+                                Console.WriteLine("ricerca completata non è stato trovato nessun risultato");
+                            }
+                        
+                        break;
+                    }
+                case "4":
+                    {
+                        Console.WriteLine("uscita");
+                        exit = false;
+                        break;
+
+                    }
+                default:
+                    {
+                        Console.WriteLine("input non valido");
+                        break;
+                    }
+
+            }
+
+        }
+       
+
+
+
+
+
+
+
+
+    }
+
+
+
 
 
 
