@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bancarium
+namespace bancarium.entities
 {
     public class Prestito
     {
@@ -58,29 +58,29 @@ namespace bancarium
 
         public DateTime getDataDiInizio()
         {
-            return this.dataDiInizio;
+            return dataDiInizio;
         }
 
         public DateTime getDataDiFine()
         {
-            return this.dataDiInizio;
+            return dataDiInizio;
         }
 
 
         public string getRata()
         {
-            return this.rata;
+            return rata;
         }
 
 
         public double getAmmontare()
         {
-            return this.ammontare;
+            return ammontare;
         }
 
         public Client getCliente()
         {
-            return this.cliente;
+            return cliente;
         }
 
 

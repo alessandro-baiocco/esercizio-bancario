@@ -11,6 +11,7 @@ l’ammontare totale dei prestiti concessi.
  */
 
 using bancarium;
+using bancarium.entities;
 using System;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;

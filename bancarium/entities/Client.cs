@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bancarium
+namespace bancarium.entities
 {
     public class Client
     {
@@ -23,7 +23,7 @@ namespace bancarium
             this.cognome = cognome;
             this.codiceFiscale = codiceFiscale;
             this.stipendio = stipendio;
-            this.prestiti = [];
+            prestiti = [];
         }
 
 
@@ -56,41 +56,47 @@ namespace bancarium
 
         public string getNome()
         {
-            return this.nome;
+            return nome;
         }
 
         public string getCognome()
         {
-            return this.cognome;
+            return cognome;
         }
 
 
         public string getCodiceFiscale()
         {
-            return this.codiceFiscale;
+            return codiceFiscale;
         }
 
 
         public double getStipendio()
         {
-            return this.stipendio;
+            return stipendio;
         }
 
         public string getPrestiti()
         {
-            return this.prestiti.ToString();
+            string allLoans = prestiti.ToString();
+            if (allLoans == null)
+            {
+                return "non è presente nessun prestito";
+            }
+            return allLoans;
         }
 
         //tostring
+        override
         public string ToString()
         {
-            return $"nome : {this.nome} cognome : {this.cognome} codice fiscale : {this.codiceFiscale} stipendio : {this.stipendio}";
+            return $"nome : {nome} cognome : {cognome} codice fiscale : {codiceFiscale} stipendio : {stipendio}";
 
         }
 
         public string presentazione()
         {
-            return $"{this.nome} {this.cognome}";
+            return $"{nome} {cognome}";
 
         }
 
