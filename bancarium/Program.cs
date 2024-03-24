@@ -10,9 +10,9 @@ La banca deve poter eseguire delle ricerche sui prestiti concessi ad un cliente 
 l’ammontare totale dei prestiti concessi.
  */
 
-using bancarium;
 using bancarium.entities;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 internal class Program
@@ -53,10 +53,12 @@ internal class Program
         while (exit)
         {
             Console.WriteLine("seleziona cosa vuoi fare\n1.aggiungi prestito\n2.rimuovi prestito \n3.modifica prestito \n4.ricerca un cliente \n5.vedi lista prestiti \n6.esci");
+
             string input = Console.ReadLine();
 
 
-            
+
+
 
             switch (input)
             {
@@ -80,6 +82,7 @@ internal class Program
                                
                             } catch (ArgumentOutOfRangeException ex)
                             {
+                                Console.WriteLine(ex.Message);
                                 Console.WriteLine("numero non valido selezionare un numero nella lista");
                             }
                           
@@ -107,6 +110,7 @@ internal class Program
                                     break;
                             } catch(ArgumentOutOfRangeException ex)
                             {
+                                Console.WriteLine(ex.Message);
                                 Console.WriteLine("numero non valido selezionare un numero nella lista");
                             }
                           
@@ -139,6 +143,7 @@ internal class Program
                             }
                             catch (ArgumentOutOfRangeException ex)
                             {
+                                Console.WriteLine(ex.Message);
                                 Console.WriteLine("numero non valido selezionare un numero nella lista");
                             }
 
@@ -203,6 +208,7 @@ internal class Program
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("input non valido");
 
             }
@@ -221,6 +227,7 @@ internal class Program
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("input non valido");
 
             }
@@ -298,6 +305,8 @@ internal class Program
         Prestito loan = new Prestito(today, dt, rata, ammontare, cliente);
 
         prestiti.Add(loan);
+
+        
 
         return loan;
 
